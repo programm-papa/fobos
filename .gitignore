@@ -1,0 +1,5 @@
+# ignore wordpress dir
+wordpress/
+
+# ignore carbon-fields.zip
+carbon-fields.zip
