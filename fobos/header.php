@@ -15,45 +15,90 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+    <title>Фобос</title>
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'fobos' ); ?></a>
+	<header>
+        <div class="fix-header header">
+            <div class="wrapper">
+                <div class="topheader_fixed">
+                    <div class="topheader__logo">ФОБОС</div>
+                    <nav class="menu">
+                        <div class="menu__list">
+                            <div class="item menu_item_1">
+                                <a href="#block1">
+                                    <div class="text">Партнеры</div>
+                                </a>
+                            </div>
+                            <div class="item menu_item_2">
+                                <a href="#block2">
+                                    <div class="text">Каток</div>
+                                </a>
+                            </div>
+                            <div class="item menu_item_3">
+                                <a href="#block3">
+                                    <div class="text">Аренда</div>
+                                </a>
+                            </div>
+                            <div class="item menu_item_4">
+                                <a href="#block4">
+                                    <div class="text">Контакты</div>
+                                </a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$fobos_description = get_bloginfo( 'description', 'display' );
-			if ( $fobos_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $fobos_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+                            </div>
+                        </div>
+                    </nav>
+                    <a href="http://ipeye.ru/ipeye_service/api/iframe.php?iframe_player=1&dev=d787aafb36e9479c809c3ac2da5deb2a&autoplay=1&archive=1" target="_blank" class="topheader__link">
+                        <img src="<?php print_r(get_template_directory_uri());?>/image/camera.png"  alt="Camera" class="camera">
+                        <div class="text">Трансляция с катка</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="header">
+                <div class="topheader">
+                    <div class="topheader__logo">ФОБОС</div>
+                    <a href="http://ipeye.ru/ipeye_service/api/iframe.php?iframe_player=1&dev=d787aafb36e9479c809c3ac2da5deb2a&autoplay=1&archive=1" target="_blank" class="topheader__link">
+                        <img src="<?php print_r(get_template_directory_uri());?>/image/camera.png"  alt="Camera" class="camera">
+                        <div class="text">Трансляция с катка</div>
+                    </a>
+                </div>
+                <div class="siteinfo">
+                    <div class="siteinfo__bc">бизнес-центр</div>
+                    <div class="siteinfo__cn">фобос</div>
+                </div>
+                <nav class="menu">
+                    <div class="menu__list">
+                        <div class="item menu_item_1">
+                            <a href="#block1">
+                                <div class="text">Партнеры</div>
+                            </a>
+                        </div>
+                        <div class="item menu_item_2">
+                            <a href="#block2">
+                                <div class="text">Каток</div>
+                            </a>
+                        </div>
+                        <div class="item menu_item_3">
+                            <a href="#block3">
+                                <div class="text">Аренда</div>
+                            </a>
+                        </div>
+                        <div class="item menu_item_4">
+                            <a href="#block4">
+                                <div class="text">Контакты</div>
+                            </a>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'fobos' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
