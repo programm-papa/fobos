@@ -142,6 +142,7 @@ add_action( 'widgets_init', 'fobos_widgets_init' );
 function fobos_scripts() {
 	wp_enqueue_style( 'fobos-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'fobos-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'fobos-main-style', get_template_directory_uri() . '/css/style.css');
 
 	wp_enqueue_script( 'fobos-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -183,10 +184,77 @@ use Carbon_Fields\Field;
 
 add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
 function crb_attach_theme_options() {
-    Container::make( 'theme_options', __( 'Theme Options' ) )
-        ->add_fields( array(
-            Field::make( 'text', 'crb_text', 'Text Field' ),
-        ) );
+	Container::make( 'theme_options', 'Управление' )
+	->add_tab( 'Контакты', array(
+		Field::make( 'text', 'rent_phone', 'Телефон Аренды' )->help_text( 'Телефон для связи' ),
+		Field::make( 'text', 'ice_rink_phone', 'Телефон Каток' )->help_text( 'Телефон для связи' ),
+		Field::make( 'text', 'address', 'Адрес' )->help_text( 'Укажите адрес ТЦ' ),
+	) )
+	->add_tab( 'Партнеры', array(
+		Field::make( 'complex', 'partner', 'Список Партнеров' )
+			 ->add_fields( array(
+				 Field::make( 'text', 'partner_name', 'Название партнера' )->set_width( 33 ),
+				 Field::make( 'complex', 'partner_contacts', 'Список контактов' ) ->add_fields( array(
+					Field::make( "select", "contact_type", "В какой валюте отображать награду?" )
+					->add_options( array(
+						'tel_m'  => 'мобильный телефон',
+						'tel'  => 'телефон стационарный',
+						'link'  => 'ссылка',
+					)),
+					Field::make( 'text', 'mob_phone_contact', 'Телефон' )
+					->set_width( 33 )
+					->help_text( 'Мобильный телефон в формате вихуального отображения на сайте, пример:"+7(9хх) ххх-хх-хх"' )
+					->set_conditional_logic(array(
+						'relation' => 'AND',
+						array(
+							'field' => 'contact_type',
+							'value' => 'tel_m',
+							'compare' => '=',
+						)
+					)),
+					Field::make( 'text', 'phone_contact', 'Телефон' )
+					->set_width( 33 )
+					->help_text( 'Стационарный телефон партнера' )
+					->set_conditional_logic(array(
+						'relation' => 'AND',
+						array(
+							'field' => 'contact_type',
+							'value' => 'tel',
+							'compare' => '=',
+						)
+					)),
+					Field::make( 'text', 'site_link_url', 'Ссылка' )
+						->set_width( 33 )
+						->help_text( 'Поле для ввода ссылки, без сокращений, ссылка на соцсеть или сайт' )
+						->set_conditional_logic(array(
+							'relation' => 'AND',
+							array(
+								'field' => 'contact_type',
+								'value' => 'link',
+								'compare' => '=',
+							)
+						)),
+					Field::make( 'text', 'site_link_name', 'Название' )
+						->set_width( 33 )
+						->help_text('Название, которое отобразиться в карточке')
+						->set_conditional_logic(array(
+							'relation' => 'AND',
+							array(
+								'field' => 'contact_type',
+								'value' => 'link',
+								'compare' => '=',
+							)
+						)),
+				 ) ),
+				
+			 ) )
+	) )
+	->add_tab( 'СЕО', array(
+		Field::make( 'text', 'title-lp', 'Title лендинга' ),
+		Field::make( 'text', 'description-lp', 'Description лендинга' ),
+		Field::make( "header_scripts", "header_google_analytics", 'Код счётчика Гугл.Аналитикс' ),
+		Field::make( "header_scripts", "header_script_yandex_metrika", 'Код счётчика Яндекс.Метрики' ),
+	) );
 }
 
 
