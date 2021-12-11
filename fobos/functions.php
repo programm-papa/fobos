@@ -189,7 +189,10 @@ function crb_attach_theme_options() {
 	Container::make( 'theme_options', 'Управление' )
 	->add_tab( 'Контакты', array(
 		Field::make( 'text', 'rent_phone', 'Телефон Аренды' )->help_text( 'Телефон для связи' ),
+<<<<<<< HEAD
 		Field::make( 'text', 'rent_phone_description', 'Описание времени для звонка' )->help_text( 'Текст: "Для справок по аренде звонить в рабочее время ежедневно с 9:00–19:00"' ),
+=======
+>>>>>>> b2fa3ec05221c9c6e5fdcbea03c13ad9cf937d85
 		Field::make( 'text', 'ice_rink_phone', 'Телефон Каток' )->help_text( 'Телефон для связи' ),
 		Field::make( 'text', 'address', 'Адрес' )->help_text( 'Укажите адрес ТЦ' ),
 	) )
@@ -206,7 +209,11 @@ function crb_attach_theme_options() {
 					)),
 					Field::make( 'text', 'mob_phone_contact', 'Телефон' )
 					->set_width( 33 )
+<<<<<<< HEAD
 					->help_text( 'Мобильный телефон в формате визуального отображения на сайте, пример:"+7(9хх) ххх-хх-хх"' )
+=======
+					->help_text( 'Мобильный телефон в формате вихуального отображения на сайте, пример:"+7(9хх) ххх-хх-хх"' )
+>>>>>>> b2fa3ec05221c9c6e5fdcbea03c13ad9cf937d85
 					->set_conditional_logic(array(
 						'relation' => 'AND',
 						array(
@@ -252,6 +259,7 @@ function crb_attach_theme_options() {
 				
 			 ) )
 	) )
+<<<<<<< HEAD
 	->add_tab( 'Каток', array(
 		//Каток
 		Field::make( 'text', 'ice_rink_work_day', 'Дни работы катка' )->set_width( 20 )
@@ -291,6 +299,14 @@ function crb_attach_theme_options() {
 		Field::make( 'text', 'sharpening_skates_price', 'Цена заточки коньков' )->set_width( 20 )
 			->help_text( 'Цену указать в виде "200 руб."' ),
 	));
+=======
+	->add_tab( 'СЕО', array(
+		Field::make( 'text', 'title-lp', 'Title лендинга' ),
+		Field::make( 'text', 'description-lp', 'Description лендинга' ),
+		Field::make( "header_scripts", "header_google_analytics", 'Код счётчика Гугл.Аналитикс' ),
+		Field::make( "header_scripts", "header_script_yandex_metrika", 'Код счётчика Яндекс.Метрики' ),
+	) );
+>>>>>>> b2fa3ec05221c9c6e5fdcbea03c13ad9cf937d85
 }
 
 
